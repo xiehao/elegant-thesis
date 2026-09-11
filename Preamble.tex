@@ -23,8 +23,8 @@ skipbelow=6pt
 ]{leftbarbox}
 
 % --- Fonts & Languages ---
-\usepackage{fontspec}
-\usepackage{polyglossia}
+\usepackage[UTF8,scheme=plain,fontset=none]{ctex}
+\usepackage[english]{babel}
 \usepackage[most]{tcolorbox}
 \usepackage{etoolbox}
 \usepackage{footmisc}
@@ -96,7 +96,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % Equation References
 % ==========================
 \def\equationautorefname{equation}
-\renewcommand{\eqref}[1]{%
+\DeclareRobustCommand{\eqref}[1]{%
 	\hyperref[#1]{\textcolor{chapterred}{(\ref*{#1})}}%
 }
 
@@ -220,14 +220,14 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % ==========================
 % Languages & Fonts
 % ==========================
-\setmainlanguage{english}
-\setotherlanguages{arabic,french}
-
 \addto\captionsenglish{\renewcommand{\tablename}{Table}}
 \addto\captionsenglish{\renewcommand{\figurename}{Figure}}
 
-\newfontfamily\englishfont{TeX Gyre Pagella}
-\newfontfamily\frenchfont{TeX Gyre Pagella}
+\setmainfont{TeX Gyre Pagella}
+\setCJKmainfont[
+	BoldFont=FandolHei-Regular.otf,
+	ItalicFont=FandolKai-Regular.otf
+]{FandolSong-Regular.otf}
 \newfont{\chapterNumber}{pplr9d at 120pt}
 
 % ==========================
