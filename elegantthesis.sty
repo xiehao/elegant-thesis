@@ -1,10 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{elegantthesis}[2026/09/11 Elegant thesis presentation]
+
 % ==========================
 % Packages
 % ==========================
 
 % --- Frames ---
-\usepackage{mdframed}
-\usepackage{xcolor}
+\RequirePackage{mdframed}
+\RequirePackage{xcolor}
 
 \newmdenv[
 topline=false,
@@ -23,58 +26,56 @@ skipbelow=6pt
 ]{leftbarbox}
 
 % --- Fonts & Languages ---
-\usepackage[UTF8,scheme=plain,fontset=none]{ctex}
-\usepackage[english]{babel}
-\usepackage[most]{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{footmisc}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{etoolbox}
+\RequirePackage{footmisc}
 \counterwithin*{footnote}{chapter}
-\usepackage{caption}
+\RequirePackage{caption}
 
 % --- Layout ---
-\usepackage{geometry}
-\usepackage{setspace}
-\usepackage{fancyhdr}
-\usepackage{atbegshi}
-\usepackage{ifoddpage}
-\usepackage{marginnote}
-\usepackage{mparhack}
-\usepackage{marginfix}
-\usepackage{ragged2e}
+\RequirePackage{geometry}
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage{atbegshi}
+\RequirePackage{ifoddpage}
+\RequirePackage{marginnote}
+\RequirePackage{mparhack}
+\RequirePackage{marginfix}
+\RequirePackage{ragged2e}
 
 % --- Graphics ---
-\usepackage{graphicx}
-\usepackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
 \usetikzlibrary{calc, arrows.meta, positioning, patterns, shapes.geometric, fadings}
-\usepackage{pgfornament}
-\usepackage{pgfplots}
-\usepackage{fourier-orns}
-\usepackage{pifont}
+\RequirePackage{pgfornament}
+\RequirePackage{pgfplots}
+\RequirePackage{fourier-orns}
+\RequirePackage{pifont}
 \pgfplotsset{compat=1.18}
 \setlength{\marginparsep}{0.6cm}
 \setlength{\marginparwidth}{3.2cm}
 % --- Math ---
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
 
 % --- Tables ---
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{makecell}
-\usepackage{array}
-\usepackage{wrapfig}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage{makecell}
+\RequirePackage{array}
+\RequirePackage{wrapfig}
 
 % --- Figures ---
-\usepackage{subcaption}
-\usepackage{float}
+\RequirePackage{subcaption}
+\RequirePackage{float}
 
 % --- Lists ---
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 
 % --- Hyperlinks ---
-\usepackage[
+\RequirePackage[
 colorlinks=true,
 linkcolor=black,
 citecolor=black,
@@ -91,6 +92,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % ==========================
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
+\numberwithin{equation}{chapter}
 
 % ==========================
 % Equation References
@@ -110,7 +112,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % ==========================
 % Sections Formatting
 % ==========================
-\usepackage{titlesec}
+\RequirePackage{titlesec}
 
 \titleformat{\section}
 {\normalfont\bfseries\fontsize{17}{20}\selectfont}
@@ -127,8 +129,8 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % ==========================
 % TOC / LOT / LOF
 % ==========================
-\usepackage[table]{xcolor}
-\usepackage[titles]{tocloft}
+\RequirePackage[table]{xcolor}
+\RequirePackage[titles]{tocloft}
 
 \makeatletter
 \renewcommand{\tableofcontents}{%
@@ -477,19 +479,23 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % ==========================
 % Custom Chapter
 % ==========================
-\newcommand{\CustomChapter}[2]{%
+\newcommand{\CustomChapter}[1]{%
 	\cleardoublepage
-	\thispagestyle{chapterfirst}%
+	\refstepcounter{chapter}%
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+	\markboth{#1}{}%
+	\ChapterHeader
 	\noindent
 	\begin{tikzpicture}[remember picture, overlay]
 
-		\node[anchor=west, xshift=1.4cm, yshift=8cm, minimum size=3cm, inner sep=0pt, font=\chapterNumber\color{chapterred}] (num) at (current page.west) {#1};
+		\node[anchor=west, xshift=1.4cm, yshift=8cm, minimum size=3cm, inner sep=0pt, font=\chapterNumber\color{chapterred}] (num) at (current page.west) {\thechapter};
 	
 		\node[anchor=south west, inner sep=0pt, xshift=0.6cm, yshift=8pt] (title) at (num.south east) {
 			\begin{minipage}[b]{\dimexpr\linewidth - 4cm\relax}  
 				
 				\raggedright
-				\scshape\fontsize{25}{32}\selectfont #2\par
+				\scshape\fontsize{25}{32}\selectfont #1\par
 			\end{minipage}
 		};
 
@@ -562,13 +568,40 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
 }
 
+\newcommand{\CustomIntroduction}[1]{%
+	\CustomIntro{0}{#1}%
+	\phantomsection
+	\addcontentsline{toc}{chapter}{#1}%
+	\markboth{#1}{}%
+}
+
+\newcommand{\CustomConclusion}[1]{%
+	\cleardoublepage
+	\refstepcounter{chapter}%
+	\CustomIntro{\thechapter}{#1}%
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+	\markboth{#1}{}%
+}
+
 % ==========================
 % Custom Appendix
 % ==========================
-\newcommand{\CustomAppendixIntro}[2]{%
+\newif\ifelegantthesisappendices
+\elegantthesisappendicesfalse
+
+\newcommand{\CustomAppendix}[1]{%
+	\ifelegantthesisappendices\else
+		\appendix
+		\setcounter{chapter}{0}%
+		\elegantthesisappendicestrue
+	\fi
 	\cleardoublepage
-	\thispagestyle{chapterfirst}%
-	\renewcommand{\thechapter}{#1}%
+	\refstepcounter{chapter}%
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Appendix \thechapter\ -- #1}%
+	\markboth{#1}{}%
+	\AppendixHeader
 	\noindent
 	\begin{tikzpicture}[remember picture, overlay]
 		%---------------------------------
@@ -587,7 +620,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 		minimum size=3cm,
 		inner sep=0pt,
 		font=\fontsize{120}{120}\selectfont\color{chapterred}
-		] (num) at (current page.west) {#1};
+		] (num) at (current page.west) {\thechapter};
 		
 		%---------------------------------
 		% Appendix title
@@ -604,7 +637,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 				\raggedright
 				\scshape
 				\fontsize{25}{32}\selectfont
-				#2\par
+				#1\par
 			\end{minipage}
 		};
 		
@@ -726,19 +759,6 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\end{center}
 	\vspace*{\fill}
 	\endgroup
-}
-
-% ==========================
-% Reset Counters
-% ==========================
-\newcommand{\ResetCounters}[1]{%
-	\setcounter{chapter}{#1}
-	\setcounter{section}{0}
-	\setcounter{figure}{0}
-	\setcounter{table}{0}
-	\setcounter{equation}{0}
-	\setcounter{footnote}{0}
-	\numberwithin{equation}{chapter}
 }
 
 % ==========================

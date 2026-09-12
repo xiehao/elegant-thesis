@@ -5,10 +5,11 @@
 !/.gitignore
 !/README.md
 !/LICENSE
+!/elegantthesis.cls
+!/elegantthesis.sty
 
 # Thesis source and bibliography.
 !/main.tex
-!/Preamble.tex
 !/Bibliography.bib
 !/Chapters/
 !/Chapters/*.tex
