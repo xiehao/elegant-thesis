@@ -82,9 +82,7 @@ citecolor=black,
 urlcolor=blue,
 bookmarks=true,
 bookmarksopen=true,
-backref=page,
-pdftitle={Natural Convection in a Closed Enclosure},
-pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
+backref=page
 ]{hyperref}
 
 % ==========================
@@ -231,6 +229,64 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	ItalicFont=FandolKai-Regular.otf
 ]{FandolSong-Regular.otf}
 \newfont{\chapterNumber}{pplr9d at 120pt}
+
+% ==========================
+% Title Page
+% ==========================
+\makeatletter
+\newcommand{\thesis@field}[2]{%
+	\underline{\makebox[#1][c]{#2}}%
+}
+\newcommand{\thesis@multilinefield}[2]{%
+	\underline{\makebox[#1][c]{\parbox[b]{#1}{\centering #2}}}%
+}
+
+\renewcommand{\maketitle}{%
+	\hypersetup{pdftitle={\thesis@title},pdfauthor={\thesis@author}}%
+	\pagenumbering{alph}%
+	\begin{titlepage}
+		\thispagestyle{empty}%
+		\begin{center}
+			\begin{tabular*}{\textwidth}{@{}l@{\quad}l@{\extracolsep{\fill}}r@{\extracolsep{0pt}\quad}r@{}}
+				分类号： & \thesis@field{3.1cm}{\thesis@classification} & 密级： & \thesis@field{2.5cm}{\thesis@securitylevel} \\
+				单位代码： & \thesis@field{3.1cm}{\thesis@institutioncode} & 学号： & \thesis@field{2.5cm}{\thesis@studentid}
+			\end{tabular*}
+
+			\vspace{1.2cm}
+			\includegraphics[width=0.50\textwidth]{\thesis@logo}\par
+            
+			\vspace{0.9cm}
+			{\Large\bfseries \thesis@degree\par}
+			\vspace{1.2cm}
+			{\zihao{2}\bfseries \thesis@multilinefield{0.88\textwidth}{\thesis@title}\par}
+			\vspace{0.5cm}
+			{\Large \thesis@multilinefield{0.88\textwidth}{\thesis@englishtitle}\par}
+			\vfill
+
+			\renewcommand{\arraystretch}{1.7}
+			\begin{tabular}{@{}>{\bfseries}rl@{}}
+				作者姓名： & \thesis@field{0.56\textwidth}{\thesis@author} \\
+				指导教师： & \thesis@field{0.56\textwidth}{\thesis@supervisor} \\
+				学科专业： & \thesis@field{0.56\textwidth}{\thesis@discipline} \\
+				% 专业方向： & \thesis@field{0.56\textwidth}{\thesis@major} \\
+				研究方向： & \thesis@field{0.56\textwidth}{\thesis@researchdirection} \\
+				% 答辩委员会： & \thesis@multilinefield{0.56\textwidth}{\thesis@committee}
+                所在学院： & \thesis@field{0.56\textwidth}{\thesis@college}
+			\end{tabular}
+
+			\vfill
+			\begin{tabular}{@{}>{\bfseries}rl@{}}
+                提交日期： & \thesis@field{0.4\textwidth}{\thesis@submissiondate}
+			\end{tabular}
+		\end{center}
+	\end{titlepage}%
+	\newgeometry{
+		top=2.5cm, bottom=5.4cm,
+		left=2.5cm, right=2.5cm,
+		headsep=0.8cm, includehead
+	}%
+}
+\makeatother
 
 % ==========================
 % Geometry
