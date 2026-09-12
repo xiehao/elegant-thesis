@@ -251,19 +251,19 @@
     \advance\thesis@fieldheight by -\baselineskip
     \thesis@fieldlinecount=1
     \loop\ifdim\thesis@fieldheight>0pt
-        \advance\thesis@fieldlinecount by 1
-        \advance\thesis@fieldheight by -\baselineskip
+    \advance\thesis@fieldlinecount by 1
+    \advance\thesis@fieldheight by -\baselineskip
     \repeat
     \begin{tikzpicture}[baseline=(text.base)]
         \node[inner sep=0pt, outer sep=0pt] (text) {\usebox{\thesis@multilinebox}};
         \thesis@fieldoffset=-0.65ex
         \thesis@fieldlineindex=1
         \loop
-                                   \draw[line width=1pt]
-                                       ([yshift=\thesis@fieldoffset]text.south west) --
-                                       ([yshift=\thesis@fieldoffset]text.south east);
-                                   \advance\thesis@fieldoffset by \baselineskip
-                                   \advance\thesis@fieldlineindex by 1
+        \draw[line width=1pt]
+        ([yshift=\thesis@fieldoffset]text.south west) --
+            ([yshift=\thesis@fieldoffset]text.south east);
+        \advance\thesis@fieldoffset by \baselineskip
+        \advance\thesis@fieldlineindex by 1
         \ifnum\thesis@fieldlineindex<\numexpr\thesis@fieldlinecount+1\relax
         \repeat
     \end{tikzpicture}%
@@ -275,36 +275,40 @@
     \begin{titlepage}
         \thispagestyle{empty}%
         \begin{center}
-            \begin{tabular*}{\textwidth}{@{}l@{\quad}l@{\extracolsep{\fill}}r@{\extracolsep{0pt}\quad}r@{}}
-                分类号： & \thesis@field{3.1cm}{\thesis@classification} & 密级： & \thesis@field{2.5cm}{\thesis@securitylevel} \\
-                单位代码： & \thesis@field{3.1cm}{\thesis@institutioncode} & 学号： & \thesis@field{2.5cm}{\thesis@studentid}
+            \vspace*{-12ex}
+            \zihao{-5}
+            \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}>{\bfseries}r@{\extracolsep{0pt}}l@{}}
+                & 密级： & \thesis@field{2.5cm}{\thesis@securitylevel} \\
+                & 分类号： & \thesis@field{2.5cm}{\thesis@classification} \\
+                & 学号： & \thesis@field{2.5cm}{\thesis@studentid} \\
+                & 单位代码： & \thesis@field{2.5cm}{\thesis@institutioncode}
             \end{tabular*}
 
             \vspace{1.2cm}
-            \includegraphics[width=0.50\textwidth]{\thesis@logo}\par
+            \includegraphics[width=0.618\textwidth]{\thesis@logo}\par
 
             \vspace{0.9cm}
-            {\Large\bfseries \thesis@degree\par}
-            \vspace{1.2cm}
+            {\zihao{3}\bfseries \thesis@degree\par}
+            % \vspace{1.2cm}
+            \vfill
             {\zihao{2}\bfseries \thesis@multilinefield{0.88\textwidth}{\thesis@title}\par}
             \vspace{0.5cm}
             {\Large \thesis@multilinefield{0.88\textwidth}{\thesis@englishtitle}\par}
             \vfill
 
+            \zihao{-4}
             \renewcommand{\arraystretch}{1.7}
             \begin{tabular}{@{}>{\bfseries}rl@{}}
-                作者姓名： & \thesis@field{0.56\textwidth}{\thesis@author}            \\
-                指导教师： & \thesis@field{0.56\textwidth}{\thesis@supervisor}        \\
-                学科专业： & \thesis@field{0.56\textwidth}{\thesis@discipline}        \\
-                % 专业方向： & \thesis@field{0.56\textwidth}{\thesis@major} \\
-                研究方向： & \thesis@field{0.56\textwidth}{\thesis@researchdirection} \\
-                % 答辩委员会： & \thesis@multilinefield{0.56\textwidth}{\thesis@committee}
-                所在学院： & \thesis@field{0.56\textwidth}{\thesis@college}
+                作者姓名： & \thesis@field{0.45\textwidth}{\thesis@author}            \\
+                指导教师： & \thesis@field{0.45\textwidth}{\thesis@supervisor}        \\
+                学科专业： & \thesis@field{0.45\textwidth}{\thesis@discipline}        \\
+                研究方向： & \thesis@field{0.45\textwidth}{\thesis@researchdirection} \\
+                所在学院： & \thesis@field{0.45\textwidth}{\thesis@college}
             \end{tabular}
 
-            \vfill
+            \vspace{8ex}
             \begin{tabular}{@{}>{\bfseries}rl@{}}
-                提交日期： & \thesis@field{0.4\textwidth}{\thesis@submissiondate}
+                提交日期： & \thesis@field{0.45\textwidth}{\thesis@submissiondate}
             \end{tabular}
         \end{center}
     \end{titlepage}%
