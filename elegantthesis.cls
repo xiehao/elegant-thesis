@@ -10,7 +10,6 @@
 \def\thesis@securitylevel{}
 \def\thesis@institutioncode{}
 \def\thesis@studentid{}
-\def\thesis@university{}
 \def\thesis@college{}
 \def\thesis@degree{}
 \def\thesis@title{}
@@ -18,18 +17,14 @@
 \def\thesis@author{}
 \def\thesis@supervisor{}
 \def\thesis@discipline{}
-\def\thesis@major{}
 \def\thesis@researchdirection{}
-\def\thesis@committee{}
 \def\thesis@submissiondate{}
-\def\thesis@academicyear{}
 \def\thesis@logo{}
 
 \newcommand{\ThesisClassification}[1]{\gdef\thesis@classification{#1}}
 \newcommand{\ThesisSecurityLevel}[1]{\gdef\thesis@securitylevel{#1}}
 \newcommand{\ThesisInstitutionCode}[1]{\gdef\thesis@institutioncode{#1}}
 \newcommand{\ThesisStudentId}[1]{\gdef\thesis@studentid{#1}}
-\newcommand{\ThesisUniversity}[1]{\gdef\thesis@university{#1}}
 \newcommand{\ThesisCollege}[1]{\gdef\thesis@college{#1}}
 \newcommand{\ThesisDegree}[1]{\gdef\thesis@degree{#1}}
 \newcommand{\ThesisTitle}[1]{\gdef\thesis@title{#1}}
@@ -37,11 +32,8 @@
 \newcommand{\ThesisAuthor}[1]{\gdef\thesis@author{#1}}
 \newcommand{\ThesisSupervisor}[1]{\gdef\thesis@supervisor{#1}}
 \newcommand{\ThesisDiscipline}[1]{\gdef\thesis@discipline{#1}}
-\newcommand{\ThesisMajor}[1]{\gdef\thesis@major{#1}}
 \newcommand{\ThesisResearchDirection}[1]{\gdef\thesis@researchdirection{#1}}
-\newcommand{\ThesisCommittee}[1]{\gdef\thesis@committee{#1}}
 \newcommand{\ThesisSubmissionDate}[1]{\gdef\thesis@submissiondate{#1}}
-\newcommand{\ThesisAcademicYear}[1]{\gdef\thesis@academicyear{#1}}
 \newcommand{\ThesisLogo}[1]{\gdef\thesis@logo{#1}}
 \makeatother
 

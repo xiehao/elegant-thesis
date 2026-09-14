@@ -228,6 +228,9 @@
     BoldFont=FandolHei-Regular.otf,
     ItalicFont=FandolKai-Regular.otf
 ]{FandolSong-Regular.otf}
+\setCJKmonofont[
+    AutoFakeBold=2.5
+]{FandolFang-Regular.otf}
 \newfont{\chapterNumber}{pplr9d at 120pt}
 
 % ==========================
@@ -276,8 +279,8 @@
         \thispagestyle{empty}%
         \begin{center}
             \vspace*{-12ex}
-            \zihao{-5}
-            \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}>{\bfseries}r@{\extracolsep{0pt}}l@{}}
+            \zihao{5}
+            \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}>{\bfseries}r@{\extracolsep{0pt}}>{\ttfamily}l@{}}
                 & 密级： & \thesis@field{2.5cm}{\thesis@securitylevel} \\
                 & 分类号： & \thesis@field{2.5cm}{\thesis@classification} \\
                 & 学号： & \thesis@field{2.5cm}{\thesis@studentid} \\
@@ -288,17 +291,15 @@
             \includegraphics[width=0.618\textwidth]{\thesis@logo}\par
 
             \vspace{0.9cm}
-            {\zihao{3}\bfseries \thesis@degree\par}
+            {\zihao{-1}\bfseries \thesis@degree\par}
             % \vspace{1.2cm}
             \vfill
-            {\zihao{2}\bfseries \thesis@multilinefield{0.88\textwidth}{\thesis@title}\par}
-            \vspace{0.5cm}
-            {\Large \thesis@multilinefield{0.88\textwidth}{\thesis@englishtitle}\par}
+            {\zihao{2} \ttfamily\bfseries \thesis@multilinefield{0.88\textwidth}{\thesis@title}\par}
             \vfill
 
             \zihao{-4}
             \renewcommand{\arraystretch}{1.7}
-            \begin{tabular}{@{}>{\bfseries}rl@{}}
+            \begin{tabular}{@{}>{\bfseries}r>{\ttfamily}l@{}}
                 作者姓名： & \thesis@field{0.45\textwidth}{\thesis@author}            \\
                 指导教师： & \thesis@field{0.45\textwidth}{\thesis@supervisor}        \\
                 学科专业： & \thesis@field{0.45\textwidth}{\thesis@discipline}        \\
@@ -308,7 +309,7 @@
 
             \vspace{8ex}
             \begin{tabular}{@{}>{\bfseries}rl@{}}
-                提交日期： & \thesis@field{0.45\textwidth}{\thesis@submissiondate}
+                提交日期： & \thesis@field{0.45\textwidth}{\ttfamily\thesis@submissiondate}
             \end{tabular}
         \end{center}
     \end{titlepage}%
