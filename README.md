@@ -42,3 +42,4 @@ To compile your thesis with its full index, glossary, and bibliography layout, s
 
 ```bash
 latexmk -xelatex main.tex
+```

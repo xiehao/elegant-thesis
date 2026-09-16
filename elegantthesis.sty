@@ -5,6 +5,11 @@
 % Packages
 % ==========================
 
+\RequirePackage[UTF8,scheme=plain,fontset=none]{ctex}
+\RequirePackage[english]{babel}
+\RequirePackage{varwidth}
+\RequirePackage[nointegrals]{wasysym}
+
 % --- Frames ---
 \RequirePackage{mdframed}
 \RequirePackage{xcolor}
@@ -232,94 +237,6 @@
     AutoFakeBold=2.5
 ]{FandolFang-Regular.otf}
 \newfont{\chapterNumber}{pplr9d at 120pt}
-
-% ==========================
-% Title Page
-% ==========================
-\makeatletter
-\newcommand{\thesis@field}[2]{%
-    \underline{\makebox[#1][c]{#2}}%
-}
-\newsavebox{\thesis@multilinebox}
-\newdimen\thesis@fieldheight
-\newdimen\thesis@fieldoffset
-\newcount\thesis@fieldlinecount
-\newcount\thesis@fieldlineindex
-\newcommand{\thesis@multilinefield}[2]{%
-    \sbox{\thesis@multilinebox}{%
-        \parbox[b]{#1}{\centering\strut #2\par}%
-    }%
-    \thesis@fieldheight=\ht\thesis@multilinebox
-    \advance\thesis@fieldheight by \dp\thesis@multilinebox
-    \advance\thesis@fieldheight by -\baselineskip
-    \thesis@fieldlinecount=1
-    \loop\ifdim\thesis@fieldheight>0pt
-    \advance\thesis@fieldlinecount by 1
-    \advance\thesis@fieldheight by -\baselineskip
-    \repeat
-    \begin{tikzpicture}[baseline=(text.base)]
-        \node[inner sep=0pt, outer sep=0pt] (text) {\usebox{\thesis@multilinebox}};
-        \thesis@fieldoffset=-0.65ex
-        \thesis@fieldlineindex=1
-        \loop
-        \draw[line width=1pt]
-        ([yshift=\thesis@fieldoffset]text.south west) --
-            ([yshift=\thesis@fieldoffset]text.south east);
-        \advance\thesis@fieldoffset by \baselineskip
-        \advance\thesis@fieldlineindex by 1
-        \ifnum\thesis@fieldlineindex<\numexpr\thesis@fieldlinecount+1\relax
-        \repeat
-    \end{tikzpicture}%
-}
-
-\renewcommand{\maketitle}{%
-    \hypersetup{pdftitle={\thesis@title},pdfauthor={\thesis@author}}%
-    \pagenumbering{alph}%
-    \begin{titlepage}
-        \thispagestyle{empty}%
-        \begin{center}
-            \vspace*{-12ex}
-            \zihao{5}
-            \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}>{\bfseries}r@{\extracolsep{0pt}}>{\ttfamily}l@{}}
-                & 密级： & \thesis@field{2.5cm}{\thesis@securitylevel} \\
-                & 分类号： & \thesis@field{2.5cm}{\thesis@classification} \\
-                & 学号： & \thesis@field{2.5cm}{\thesis@studentid} \\
-                & 单位代码： & \thesis@field{2.5cm}{\thesis@institutioncode}
-            \end{tabular*}
-
-            \vspace{1.2cm}
-            \includegraphics[width=0.618\textwidth]{\thesis@logo}\par
-
-            \vspace{0.9cm}
-            {\zihao{-1}\bfseries \thesis@degree\par}
-            % \vspace{1.2cm}
-            \vfill
-            {\zihao{2} \ttfamily\bfseries \thesis@multilinefield{0.88\textwidth}{\thesis@title}\par}
-            \vfill
-
-            \zihao{-4}
-            \renewcommand{\arraystretch}{1.7}
-            \begin{tabular}{@{}>{\bfseries}r>{\ttfamily}l@{}}
-                作者姓名： & \thesis@field{0.45\textwidth}{\thesis@author}            \\
-                指导教师： & \thesis@field{0.45\textwidth}{\thesis@supervisor}        \\
-                学科专业： & \thesis@field{0.45\textwidth}{\thesis@discipline}        \\
-                研究方向： & \thesis@field{0.45\textwidth}{\thesis@researchdirection} \\
-                所在学院： & \thesis@field{0.45\textwidth}{\thesis@college}
-            \end{tabular}
-
-            \vspace{8ex}
-            \begin{tabular}{@{}>{\bfseries}rl@{}}
-                提交日期： & \thesis@field{0.45\textwidth}{\ttfamily\thesis@submissiondate}
-            \end{tabular}
-        \end{center}
-    \end{titlepage}%
-    \newgeometry{
-        top=2.5cm, bottom=5.4cm,
-        left=2.5cm, right=2.5cm,
-        headsep=0.8cm, includehead
-    }%
-}
-\makeatother
 
 % ==========================
 % Geometry
