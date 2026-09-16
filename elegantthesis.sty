@@ -116,6 +116,7 @@
 % Sections Formatting
 % ==========================
 \RequirePackage{titlesec}
+\RequirePackage{indentfirst}
 
 \titleformat{\section}
 {\normalfont\bfseries\fontsize{17}{20}\selectfont}
@@ -247,7 +248,9 @@
     headsep=0.8cm, includehead
 }
 \setlength{\headheight}{14pt}
-\linespread{1.09}
+\setstretch{1.2}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.4\baselineskip}
 
 % ==========================
 % Colors
@@ -911,8 +914,4 @@
     \end{center}
 }
 
-% ==========================
-% Line Spread
-% ==========================
-\linespread{1.1}
 %-----------------------------------------------------------------

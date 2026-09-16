@@ -1,9 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elegantthesis}[2026/09/11 Elegant thesis document class]
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass{report}
+\LoadClass{book}
 
 \makeatletter
 \def\thesis@classification{}
@@ -107,7 +107,6 @@
 
 \renewcommand{\maketitle}{%
     \hypersetup{pdftitle={\thesis@title},pdfauthor={\thesis@author}}%
-    \pagenumbering{alph}%
     \begin{titlepage}
         \thispagestyle{empty}%
         \begin{center}
@@ -204,7 +203,7 @@
 
     本学位论文作者完全了解学校有关保留、使用学位论文的规定，同意学校保留并向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权浙江传媒学院可以将本学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
 
-    本学位论文属于
+    本学位论文属于：
     \begin{flushright}
         \begin{varwidth}{\linewidth}
             \begin{enumerate}[noitemsep,topsep=0pt,leftmargin=*]
