@@ -418,8 +418,8 @@
 \fancypagestyle{biblio}{%
     \fancyhf{}%
     \renewcommand*{\headrule}{\dynamicheaderrule}%
-    \fancyhead[RO]{\normalsize\textit{Bibliography}}%
-    \fancyhead[LE]{\normalsize\textit{Bibliography}}%
+    \fancyhead[RO]{\normalsize\textit{\ThesisHeadingText{bibliography}}}%
+    \fancyhead[LE]{\normalsize\textit{\ThesisHeadingText{bibliography}}}%
     \fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
     \fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}%
 }
@@ -479,11 +479,11 @@
     \pagestyle{tocstyle}%
 }
 
-\newcommand{\CustomTOC}{\CustomSectionHeader{Table of Contents}{Table of Contents}}
-\newcommand{\CustomLOT}{\CustomSectionHeader{List of Tables}{List of Tables}}
-\newcommand{\CustomLOF}{\CustomSectionHeader{List of Figures}{List of Figures}}
-\newcommand{\CustomNomenclature}{\CustomSectionHeader{Nomenclature}{Nomenclature}}
-\newcommand{\CustomBibliography}{\CustomSectionHeader{Bibliography}{Bibliography}}
+\newcommand{\CustomTOC}{\CustomSectionHeader{\ThesisHeadingText{contents}}{\ThesisHeadingText{contents}}}
+\newcommand{\CustomLOT}{\CustomSectionHeader{\ThesisHeadingText{listoftables}}{\ThesisHeadingText{listoftables}}}
+\newcommand{\CustomLOF}{\CustomSectionHeader{\ThesisHeadingText{listoffigures}}{\ThesisHeadingText{listoffigures}}}
+\newcommand{\CustomNomenclature}{\CustomSectionHeader{\ThesisHeadingText{nomenclature}}{\ThesisHeadingText{nomenclature}}}
+\newcommand{\CustomBibliography}{\CustomSectionHeader{\ThesisHeadingText{bibliography}}{\ThesisHeadingText{bibliography}}}
 
 % ==========================
 % Custom Chapter
@@ -608,7 +608,7 @@
     \cleardoublepage
     \refstepcounter{chapter}%
     \phantomsection
-    \addcontentsline{toc}{chapter}{Appendix \thechapter\ -- #1}%
+    \addcontentsline{toc}{chapter}{\ThesisHeadingText{appendix}\ \thechapter\ -- #1}%
     \markboth{#1}{}%
     \AppendixHeader
     \noindent
@@ -757,7 +757,7 @@
     \fontspec{Libertinus Serif}%
     \vspace*{\fill}
     \begin{center}
-        \AutoTitleLines{Acknowledgments}
+        \AutoTitleLines{\ThesisHeadingText{acknowledgments}}
     \end{center}
     \vspace{0.6cm}
     \begin{center}
@@ -777,8 +777,8 @@
     \pagestyle{fancy}%
     \fancyhf{}%
     \renewcommand*{\headrule}{\dynamicheaderrule}%
-    \fancyhead[RO]{\normalsize Chapter \thechapter.\ \textit{\leftmark}}%
-    \fancyhead[LE]{\normalsize Chapter \thechapter.\ \textit{\leftmark}}%
+    \fancyhead[RO]{\normalsize\ThesisHeadingText{chapter-prefix}\thechapter\ThesisHeadingText{chapter-suffix}\quad\textit{\leftmark}}%
+    \fancyhead[LE]{\normalsize\ThesisHeadingText{chapter-prefix}\thechapter\ThesisHeadingText{chapter-suffix}\quad\textit{\leftmark}}%
     \fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}
     \fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
     \thispagestyle{chapterfirst}%
@@ -791,8 +791,8 @@
     \pagestyle{fancy}%
     \fancyhf{}%
     \renewcommand*{\headrule}{\dynamicheaderrule}%
-    \fancyhead[RO]{\normalsize Appendix \thechapter.\ \textit{\leftmark}}%
-    \fancyhead[LE]{\normalsize Appendix \thechapter.\ \textit{\leftmark}}%
+    \fancyhead[RO]{\normalsize\ThesisHeadingText{appendix}\ \thechapter.\ \textit{\leftmark}}%
+    \fancyhead[LE]{\normalsize\ThesisHeadingText{appendix}\ \thechapter.\ \textit{\leftmark}}%
     \fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}
     \fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
     \thispagestyle{chapterfirst}%
@@ -808,7 +808,7 @@
     \begin{center}
         \begin{tikzpicture}
             \node[inner sep=0pt, anchor=south west] (parttext) at (0,-0.25)
-            {\fontspec{Libertinus Serif}\fontsize{16pt}{18pt}\selectfont part};
+            {\fontspec{Libertinus Serif}\fontsize{16pt}{18pt}\selectfont \ThesisHeadingText{part}};
             \node[inner sep=0pt, anchor=south west, text=chapterred] (numtext) at (1.4,-0.15)
             {\fontspec{Libertinus Serif}\fontsize{55pt}{55pt}\selectfont #1};
 

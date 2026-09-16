@@ -32,6 +32,31 @@
 \newif\ifthesis@confidential
 \thesis@confidentialfalse
 
+\newcommand{\ThesisHeading}[2]{%
+    \expandafter\gdef\csname thesis@heading@#1\endcsname{#2}%
+}
+\newcommand{\ThesisHeadingText}[1]{%
+    \csname thesis@heading@#1\endcsname
+}
+\ThesisHeading{acknowledgments}{致谢}
+\ThesisHeading{abstract}{摘要}
+\ThesisHeading{keywords}{关键词：}
+\ThesisHeading{contents}{目录}
+\ThesisHeading{listoftables}{表目录}
+\ThesisHeading{listoffigures}{图目录}
+\ThesisHeading{nomenclature}{符号说明}
+\ThesisHeading{abbreviations}{缩略语}
+\ThesisHeading{greek-letters}{希腊字母}
+\ThesisHeading{overview}{论文概述}
+\ThesisHeading{introduction}{绪论}
+\ThesisHeading{conclusion}{结论}
+\ThesisHeading{appendices}{附录}
+\ThesisHeading{appendix}{附录}
+\ThesisHeading{bibliography}{参考文献}
+\ThesisHeading{chapter-prefix}{第}
+\ThesisHeading{chapter-suffix}{章}
+\ThesisHeading{part}{部分}
+
 \newcommand{\ThesisClassification}[1]{\gdef\thesis@classification{#1}}
 \newcommand{\ThesisSecurityLevel}[1]{\gdef\thesis@securitylevel{#1}}
 \newcommand{\ThesisInstitutionCode}[1]{\gdef\thesis@institutioncode{#1}}
@@ -65,6 +90,12 @@
 \makeatother
 
 \RequirePackage{elegantthesis}
+\AtBeginDocument{%
+    \renewcommand{\contentsname}{\ThesisHeadingText{contents}}%
+    \renewcommand{\listtablename}{\ThesisHeadingText{listoftables}}%
+    \renewcommand{\listfigurename}{\ThesisHeadingText{listoffigures}}%
+    \renewcommand{\bibname}{\ThesisHeadingText{bibliography}}%
+}
 
 % ==========================
 % Title Page
