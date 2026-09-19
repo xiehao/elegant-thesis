@@ -1,23 +1,17 @@
 	% ==========================
 	% Table of Contents
 	% ==========================
-	\clearpage\pagestyle{tocstyle}
-	\CustomTOC\tableofcontents\clearpage
+	\ThesisFrontMatterHeading{\ThesisHeadingText{contents}}
+	\tableofcontents
 	
 	% ==========================
 	% List of Tables
 	% ==========================
-	\clearpage\pagestyle{tocstyle}
-	\CustomLOT
-	\phantomsection
-	\addcontentsline{toc}{chapter}{\ThesisHeadingText{listoftables}}
-	\listoftables\clearpage
+	\ThesisFrontMatterHeading[\ThesisHeadingText{listoftables}]{\ThesisHeadingText{listoftables}}
+	\listoftables
 	
 	% ==========================
 	% List of Figures
 	% ==========================
-	\clearpage\pagestyle{tocstyle}
-	\CustomLOF
-	\phantomsection
-	\addcontentsline{toc}{chapter}{\ThesisHeadingText{listoffigures}}
-	\listoffigures\clearpage
+	\ThesisFrontMatterHeading[\ThesisHeadingText{listoffigures}]{\ThesisHeadingText{listoffigures}}
+	\listoffigures

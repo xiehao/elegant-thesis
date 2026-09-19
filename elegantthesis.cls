@@ -53,6 +53,7 @@
 \ThesisHeading{appendices}{附录}
 \ThesisHeading{appendix}{附录}
 \ThesisHeading{bibliography}{参考文献}
+\ThesisHeading{publications}{攻读学位期间的主要成果}
 \ThesisHeading{chapter-prefix}{第}
 \ThesisHeading{chapter-suffix}{章}
 \ThesisHeading{part}{部分}
@@ -216,7 +217,7 @@
     \thispagestyle{empty}%
 
     \begin{center}
-        \AutoTitleLines{浙江传媒学院学位论文原创性声明}
+        \ThesisStatementTitle{浙江传媒学院学位论文原创性声明}
     \end{center}
 
     本人郑重声明：所提交的学位论文是本人在导师的指导下，独立进行研究所取得的研究成果。除文中已经加以标注引用的内容外，本论文不包含其他个人或集体已经发表或撰写过的研究成果，也不含为获得浙江传媒学院或其它教育机构的学位证书而使用过的材料。对本研究作出重要贡献的个人和集体，均已在文中以明确方式标明。本人承担本声明的法律责任。
@@ -229,7 +230,7 @@
     \vspace*{\fill}
 
     \begin{center}
-        \AutoTitleLines{浙江传媒学院学位论文版权使用授权书}
+        \ThesisStatementTitle{浙江传媒学院学位论文版权使用授权书}
     \end{center}
 
     本学位论文作者完全了解学校有关保留、使用学位论文的规定，同意学校保留并向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权浙江传媒学院可以将本学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。

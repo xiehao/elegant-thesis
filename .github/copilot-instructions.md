@@ -15,7 +15,7 @@
 
 ## Document architecture
 
-- `main.tex` is the sole document entrypoint. It loads the two-sided `elegantthesis` class, inputs `ThesisInfo.tex`, calls `\maketitle` and `\makedeclaration`, and then inputs every content module in a deliberate order: front matter, thesis overview and introduction, numbered chapters, inline parts, conclusion, appendix divider and appendices, then bibliography. Add a new structural module to this input sequence.
+- `main.tex` is the sole document entrypoint. It loads the two-sided `elegantthesis` class, inputs `ThesisInfo.tex`, calls `\maketitle` and `\makedeclaration`, and then inputs every content module in a deliberate order: front matter, thesis overview and introduction, numbered chapters, inline parts, conclusion, appendices, then back matter (bibliography, degree-period publications, and acknowledgments). Add a new structural module to this input sequence.
 - `elegantthesis.cls` owns the `book` base class, metadata setters, `\maketitle`, and `\makedeclaration`. `elegantthesis.sty` owns CTeX/Babel setup and the visual design: packages, fonts, geometry, paragraph layout, colors, page styles, equation-reference formatting, and helper commands. Put base-document or metadata changes in the class and presentation changes in the style package.
 - `ThesisInfo.tex` is the single user-editable metadata source. Set title-page fields there with the `\Thesis...` commands, including the Chinese and English titles, classification, security level, institution code, student ID, author, supervisor, discipline, major, research direction, college, submission date, academic year, committee, and logo. It also configures the declaration and authorization pages: signature-image paths, the declaration date, author authorization date, supervisor authorization date, declassification year, and `public` or `confidential` status (default `public`). The declassification year is shown only for confidential theses. Leave a signature path empty to reserve blank signing space. Do not hard-code these values in the class, style package, or content files.
 - `ThesisInfo.tex` also centralizes structural interface labels through `\ThesisHeading{<key>}{<text>}`. The supplied values are Chinese; replace them to use another language. Use `\ThesisHeadingText{<key>}` rather than hard-coding a template-controlled heading in a content module, page style, or table-of-contents entry.
@@ -29,13 +29,13 @@
 - Start a numbered chapter with:
 
   ```tex
-  \CustomChapter{<title>}
+  \ThesisChapter{<title>}
   \ChapterQuote{<quote>}{<author>}
   \label{ch:<identifier>}
   ```
 
-- `\CustomChapter` advances the chapter counter and initializes dependent section, figure, table, equation, and footnote counters. It also creates the table-of-contents and running-header entries, so never supply a chapter number or duplicate those commands in the content file.
-- Use `\CustomIntroduction`, `\CustomConclusion`, and `\CustomAppendix` for those nonstandard structural pages; their displayed numbers and associated entries are derived automatically. `\InlinePart` remains the template's dedicated inline part divider.
+- Structural modules must use the semantic commands that own their page break, table-of-contents entry, bookmark, running header, page style, and title rendering: `\ThesisFrontMatterHeading`, `\ThesisIntroduction`, `\ThesisChapter`, `\ThesisConclusion`, `\ThesisAppendix`, and `\ThesisBackMatterHeading`. Do not duplicate those settings in content files.
+- `\ThesisChapter` advances the chapter counter and initializes dependent section, figure, table, equation, and footnote counters. It also creates the table-of-contents and running-header entries, so never supply a chapter number or duplicate those commands in the content file. `\ThesisIntroduction`, `\ThesisConclusion`, and `\ThesisAppendix` derive their displayed numbers and associated entries automatically. `\ThesisInlinePart` remains the template's dedicated inline part divider. The legacy `Custom...` commands remain available for compatibility.
 - Preserve reference prefixes used across modules: `ch:` for chapters, `ann:` for appendices, `eq:` for equations, `fig:` for figures, and `tab:` for tables. Use `\eqref{...}` for equations so the preamble's linked, colored equation style is retained.
 - CTeX provides Chinese support and Babel loads English language rules. CTeX automatically uses the TeX Live-supplied `FandolSong-Regular.otf` for CJK glyphs while retaining TeX Gyre Pagella for Latin text, so normal Chinese-English prose does not require `\textenglish{...}`.
 - The global paragraph layout is a 2em first-line indent, 1.2 line stretch, and a 0.4-baseline paragraph gap. Keep deliberate local exceptions (such as the thesis-overview callout boxes) scoped, and restore the global values afterward.
